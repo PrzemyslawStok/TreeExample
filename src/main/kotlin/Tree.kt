@@ -9,7 +9,9 @@ class Leaf(val kolor: String): treeBase{
 
 }
 
-class Branch: treeBase{
+open class Branch: treeBase{
+    val branchList:MutableList<treeBase> = mutableListOf()
+
     override fun print() {
     }
     fun addBranch(branch: Branch){
@@ -21,8 +23,8 @@ class Branch: treeBase{
 
 }
 
-class Tree {
-    fun print(){
+class Tree : Branch(){
+    override fun print(){
         println("Proste drzewko")
     }
 }
