@@ -1,10 +1,10 @@
 interface treeBase{
-    fun print()
+    fun print(spaces: String="  ")
 }
 
 class Leaf(val kolor: String): treeBase{
-    override fun print() {
-        println("Liść koloru ${kolor}")
+    override fun print(spaces: String) {
+        println(spaces+"Liść koloru ${kolor}")
     }
 
 }
@@ -12,21 +12,22 @@ class Leaf(val kolor: String): treeBase{
 open class Branch: treeBase{
     val branchList:MutableList<treeBase> = mutableListOf()
 
-    override fun print() {
-        println("Gałąż ...")
-        branchList.forEach{it.print()}
+    override fun print(spaces: String) {
+        println("Gałąż: ")
+        branchList.forEach{it.print(spaces+"  ")}
     }
     fun addBranch(branch: Branch){
-
+        branchList.add(branch)
     }
     fun addLeaf(leaf: Leaf){
-
+        branchList.add(leaf)
     }
 
 }
 
 class Tree : Branch(){
-    override fun print(){
+    override fun print(spaces: String){
         println("Proste drzewko")
+        super.print("  ")
     }
 }
