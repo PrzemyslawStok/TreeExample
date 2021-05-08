@@ -13,6 +13,8 @@ open class Branch: treeBase{
     val branchList:MutableList<treeBase> = mutableListOf()
 
     override fun print() {
+        println("Gałąż ...")
+        branchList.forEach{it.print()}
     }
     fun addBranch(branch: Branch){
 
